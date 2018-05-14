@@ -1,0 +1,16 @@
+<div class="board">
+
+  <!-- Add click event binding for this button... -->
+  <button
+    style="margin: 20px 0"
+    >
+    New Task
+  </button>
+
+  <div class="lists">
+    <div *ngFor="let statusType of statusList">
+    <!-- Markup for task lists here... -->
+    <task-list [statusType]="statusType"> </task-list>
+  </div>
+  </div>
+</div>
