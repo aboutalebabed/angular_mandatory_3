@@ -19,6 +19,12 @@ export class TasklistComponent {
 
   ngOnInit() {
     console.error('on start:', this.statusType);
+/*
+    this.taskService.getTasks(this.statusType)
+    .subscribe((tasks) => {
+      this.tasks = tasks;
+    });
+*/
     this.tasks = [
       {
         id: 1,
