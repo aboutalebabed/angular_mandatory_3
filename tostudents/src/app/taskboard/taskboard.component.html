@@ -2,10 +2,10 @@
 
   <!-- Add click event binding for this button... -->
   <button
-    style="margin: 20px 0"
-    >
+    style="margin: 20px 0" (click)="newTask()">
     New Task
   </button>
+  <task-form (taskAdded)="close($event)" *ngIf="showForm === true"></task-form>
 
   <div class="lists">
     <div *ngFor="let statusType of statusList">

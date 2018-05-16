@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+import { StatusType } from '../constants';
+
+
 @Component({
   selector: 'task-board',
   templateUrl: './taskboard.component.html',
@@ -7,8 +10,24 @@ import { Component } from '@angular/core';
 })
 export class TaskboardComponent {
 
+showForm = false;
 private statusList = ['NotStarted', 'InProgress', 'Completed'
 ];
 
-  constructor() {}
+  constructor() { }
+
+  newTask() {
+    this.showForm = !this.showForm;
+    console.log(this.showForm, "test");
+  }
+
+  close() {
+    this.showForm = false;
+    console.log(this.showForm, "Close");
+  }
+
+  nogOnInit() {
+      console.error('status', StatusType['NotStarted']);
+  }
+
 }

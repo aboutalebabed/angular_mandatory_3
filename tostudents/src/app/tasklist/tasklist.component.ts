@@ -29,7 +29,7 @@ export class TasklistComponent {
       {
         id: 1,
         status: StatusType.InProgress,
-        title: 'Test title',
+        title: 'Test titlee',
         description: 'desc',
       }
     ];
