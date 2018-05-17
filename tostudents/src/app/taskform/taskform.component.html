@@ -8,6 +8,8 @@
       class="input"
       type="text"
       placeholder="title"
+      [(ngModel)]="obj.title"
+      name="title"
   />
   <!-- Markup for error messages... -->
   <div class="error">
@@ -18,6 +20,8 @@
       class="input"
       type="text"
       placeholder="description"
+      [(ngModel)]="obj.description"
+      name="description"
   />
 
   <!-- Disable button if form is invalid. -->

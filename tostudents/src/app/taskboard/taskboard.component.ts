@@ -39,9 +39,9 @@ export class TaskboardComponent {
 }
 
 close(obj) {
-  this.showForm = false;
+  //this.showForm = false;
   console.log(obj)
-  this.taskService.addTask
+  this.taskService.addTask(obj.title, obj.description)
   console.log(this.showForm, "Close");
 }
 }

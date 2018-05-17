@@ -12,11 +12,15 @@ export class TaskformComponent {
 
   constructor() {}
 
+  obj = {
+    title: "title",
+    description: "description",
+  }
+
   saveTask() {
-    console.log(this.showForm, "No");
 
     this.showForm = false;
-    this.taskAdded.emit(true);
+    this.taskAdded.emit(this.obj);
   }
 
 }
