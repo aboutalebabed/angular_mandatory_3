@@ -13,26 +13,13 @@ export class TasklistComponent {
 
   @Input() statusType: StatusType; // För att kunna skicka till taskboard.component.html
 
-  tasks: Task[];
+
+  @Input() tasks: Task[];
 
   constructor() {}
 
   ngOnInit() {
     console.error('on start:', this.statusType);
-/*
-    this.taskService.getTasks(this.statusType)
-    .subscribe((tasks) => {
-      this.tasks = tasks;
-    });
-*/
-    this.tasks = [
-      {
-        id: 1,
-        status: StatusType.InProgress,
-        title: 'Test titlee',
-        description: 'desc',
-      }
-    ];
   }
 
   handleStatusChanged(ev) {

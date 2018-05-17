@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
-import { StatusType } from '../constants';
+import { TaskService } from '../task.service';
+import { Task, StatusType } from '../constants';
 
 
 @Component({
@@ -9,25 +10,36 @@ import { StatusType } from '../constants';
   styleUrls: ['./taskboard.component.css']
 })
 export class TaskboardComponent {
+  showForm = false;
+  taskList: Task[] = [];
+  statusTypes: StatusType[] = [
+    StatusType.NotStarted, StatusType.InProgress, StatusType.Completed
+  ];
 
-showForm = false;
-private statusList = ['NotStarted', 'InProgress', 'Completed'
-];
+  constructor(private taskService: TaskService) {}
 
-  constructor() { }
+  ngOnInit() {
+    this.taskService.getTasks()
+    .subscribe((tasks) => {
+      this.taskList = tasks;
+    });
+  }
+
+  filterTasks(statusType: StatusType, taskList: Task[]) {
+    return this.taskService.filterTasks(statusType, taskList);
+  }
+
+/*  addMockTask() {
+    return this.taskService.addTask('Mock task', 'mock description');
+  } */
 
   newTask() {
-    this.showForm = !this.showForm;
-    console.log(this.showForm, "test");
-  }
+  this.showForm = !this.showForm;
+  console.log(this.showForm, "test");
+}
 
-  close() {
-    this.showForm = false;
-    console.log(this.showForm, "Close");
-  }
-
-  nogOnInit() {
-      console.error('status', StatusType['NotStarted']);
-  }
-
+close() {
+  this.showForm = false;
+  console.log(this.showForm, "Close");
+}
 }

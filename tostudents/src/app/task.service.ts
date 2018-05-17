@@ -1,28 +1,50 @@
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Observable } from "rxjs/Observable";
-import { Task, StatusType } from './constants';
-import 'rxjs/add/observable/of';
+import { Task, StatusType } from './constants';
 
 export class TaskService {
-  tasks: Task[];
-  // add class properties for:
-  //
-  // a task id counter
-  // an internal array of Task objects
-  // an instance of BehaviorSubject
+  taskList: Task[];
+  observer;
 
   constructor() {
-    this.tasks = [{
-      id: 1,
-      status: StatusType.NotStarted,
-      title: 'title',
-      description: 'desc'
-    }];
+    const mockData = [
+      {
+        id: 1,
+        status: StatusType.NotStarted,
+        title: 'Mocked not started',
+        description: 'Mocked description',
+      },
+      {
+        id: 2,
+        status: StatusType.Completed,
+        title: 'Mocked not started',
+        description: 'Mocked description',
+      },
+      {
+        id: 3,
+        status: StatusType.InProgress,
+        title: 'Mocked not started',
+        description: 'Mocked description',
+      }
+    ];
+
+    //FIXME mocked data.
+    this.taskList = mockData;
   }
 
-  getTasks(status: StatusType): Observable<Task[]> {
+
+  // Takes arary of tasks and statusType, returns filteredArray
+  filterTasks(statusType: StatusType, taskList: Task[] = []): Task[] {
+    return taskList.filter((task) => {
+      return task.status === statusType;
+    });
+  }
+  getTasks(): Observable<Task[]> {
     // return an observable of a task array, filtered by the passed in status...
-    return Observable.of(this.task); // Bara för att inte få error i consolen
+    return new Observable((observer) => {
+      this.observer = observer;
+      return this.observer.next(this.taskList);
+    });
   }
 
   updateTask(id: number, status: StatusType) {
@@ -31,11 +53,13 @@ export class TaskService {
 
   addTask(title: string, description: string) {
     // complete the code to add a task...
-    this.task.push({
-    id: this.task.length,
-    status: StatusType.NotStarted,
-    title: title,
-    description: description,
-  })
+    this.taskList.push({
+      id: this.taskList.length,
+      title: title,
+      description: description,
+      status: StatusType.NotStarted,
+    });
+
+    return this.observer.next(this.taskList);
   }
 }
