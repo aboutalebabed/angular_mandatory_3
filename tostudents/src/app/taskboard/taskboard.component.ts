@@ -38,8 +38,10 @@ export class TaskboardComponent {
   console.log(this.showForm, "test");
 }
 
-close() {
+close(obj) {
   this.showForm = false;
+  console.log(obj)
+  this.taskService.addTask
   console.log(this.showForm, "Close");
 }
 }

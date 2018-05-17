@@ -13,9 +13,10 @@ export class TaskformComponent {
   constructor() {}
 
   saveTask() {
+    console.log(this.showForm, "No");
+
     this.showForm = false;
     this.taskAdded.emit(true);
-    console.log(this.showForm, "No");
   }
-  
+
 }

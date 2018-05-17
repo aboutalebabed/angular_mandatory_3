@@ -12,8 +12,6 @@ import { Task, StatusType } from '../constants'
 export class TasklistComponent {
 
   @Input() statusType: StatusType; // För att kunna skicka till taskboard.component.html
-
-
   @Input() tasks: Task[];
 
   constructor() {}
