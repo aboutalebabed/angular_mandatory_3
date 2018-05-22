@@ -5,7 +5,13 @@
         {{ task.title }}
       </div>
       <!-- Markup for dropdown menu here... -->
-        {{ task.status }}
+      <select [(ngModel)]="chosenMod" (ngModelChange)="changeTask()" id="selectid" class="form-control-mb-12">
+     <option value="" disabled selected>{{task.status}}
+     <option value="1">Not Started</option>
+     <option value="2">In Progress</option>
+     <option value="3">Completed</option>
+   </select>
+
   </div>
   <hr>
   <div class="body">

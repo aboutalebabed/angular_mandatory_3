@@ -1,5 +1,6 @@
 import { Component, Input, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { Task, StatusType } from '../constants';
 
 @Component({
   selector: 'task-form',
@@ -13,11 +14,14 @@ export class TaskformComponent {
   constructor() {}
 
   obj = {
-    title: "title",
-    description: "description",
-  }
+    title: '',
+    description: '',
+    id: null,
+    status: StatusType.NotStarted,
+  };
 
   saveTask() {
+    console.error(this.obj, "No");
 
     this.showForm = false;
     this.taskAdded.emit(this.obj);

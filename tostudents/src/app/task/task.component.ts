@@ -1,6 +1,7 @@
 import { Component,Input } from '@angular/core';
 
-import { Task } from '../constants';
+import { StatusType, Task } from '../constants';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'task',
@@ -10,6 +11,27 @@ import { Task } from '../constants';
 export class TaskComponent {
 
   @Input() task: Task;
+/*    StatusType.NotStarted, StatusType.InProgress, StatusType.Completed
+];*/
 
-  constructor() {}
+  constructor(private taskService: TaskService) {}
+chosenMod: string = "";
+
+changeTask(){
+  switch(this.chosenMod) {
+    case "1": {
+      this.taskService.updateTask(this.task.id, StatusType.NotStarted)
+      break;
+    }
+    case "2": {
+      this.taskService.updateTask(this.task.id, StatusType.InProgress)
+      break;
+    }
+    case "3": {
+      this.taskService.updateTask(this.task.id, StatusType.Completed)
+      break;
+    }
+  }
+}
+
 }

@@ -7,29 +7,10 @@ export class TaskService {
   observer;
 
   constructor() {
-    const mockData = [
-      {
-        id: 1,
-        status: StatusType.NotStarted,
-        title: 'Mocked not started',
-        description: 'Mocked description',
-      },
-      {
-        id: 2,
-        status: StatusType.Completed,
-        title: 'Mocked not started',
-        description: 'Mocked description',
-      },
-      {
-        id: 3,
-        status: StatusType.InProgress,
-        title: 'Mocked not started',
-        description: 'Mocked description',
-      }
-    ];
+    this.taskList = [];
 
     //FIXME mocked data.
-    this.taskList = mockData;
+  //  this.taskList = mockData;
   }
 
 
@@ -49,7 +30,8 @@ export class TaskService {
 
   updateTask(id: number, status: StatusType) {
     // complete the code to update a task's status...
-    
+    this.taskList.find(item => item.id === id).status = status; //nytt
+
   }
 
   addTask(title: string, description: string) {
